@@ -1,8 +1,7 @@
 """General and atmospheric thermodynamics variables."""
 
 from essm.variables import Variable
-from essm.variables.units import (
-    joule, kelvin, kilogram, meter, mole, pascal, second)
+from essm.variables.units import joule, kelvin, kilogram, meter, mole, pascal, second
 
 
 class alpha_a(Variable):
@@ -23,7 +22,10 @@ class c_pa(Variable):
 
 
 class c_pamol(Variable):
-    """Molar specific heat of dry air."""
+    """Molar specific heat of dry air.  
+
+    https://en.wikipedia.org/wiki/Heat_capacity#Specific_heat_capacity 
+    """
     name = 'c_pamol'
     unit = joule / (kelvin * mole)
     domain = 'real'
@@ -57,7 +59,7 @@ class Gr(Variable):
 
 
 class h_c(Variable):
-    """Average 1-sided convective transfer coefficient."""
+    """Average 1-sided convective heat transfer coefficient."""
     name = 'h_c'
     unit = joule / (kelvin * meter**2 * second)
     domain = 'real'

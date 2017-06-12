@@ -1,13 +1,10 @@
 """General and atmospheric thermodynamics equations."""
 
 from __future__ import division
-
 from essm.equations import Equation
 from essm.variables import Variable
-from essm.variables.leaf.unsorted import C_wa, L_l, rho_al
-from essm.variables.physics.thermodynamics import (
-    M_N2, M_O2, P_N2, P_O2, D_va, Gr, Le, M_w, Nu, P_a, P_wa, Pr, R_mol, Re,
-    Re_c, T_a, alpha_a, g, h_c, k_a, nu_a, rho_a, v_w, x_N2, x_O2)
+from essm.variables.leaf.energy_water import C_wa, L_l, rho_al
+from essm.variables.physics.thermodynamics import D_va, Gr, Le, M_N2, M_O2, M_w, Nu, P_N2, P_O2, P_a, P_wa, Pr, R_mol, Re, Re_c, T_a, alpha_a, g, h_c, k_a, nu_a, rho_a, v_w, x_N2, x_O2
 from essm.variables.units import joule, kelvin, meter, second
 from sage.all import sqrt
 
@@ -52,14 +49,17 @@ class eq_Nu_forced_all(Equation):
 
 
 class eq_Dva(Equation):
-    """D_va as a function of air temperature"""
+    """D_va as a function of air temperature. 
+
+    \cite[Table A.3]{Monteith_principles_2007}
+    """
 
     class p_Dva1(Variable):
         """Internal parameter of eq_Dva."""
         name = 'p_Dva1'
         unit = meter**2 / (kelvin * second)
         domain = 'real'
-        latex_name = 'p_Dva1'
+        latex_name = 'p_1'
         default = 1.49e-07
 
     class p_Dva2(Variable):
@@ -67,21 +67,24 @@ class eq_Dva(Equation):
         name = 'p_Dva2'
         unit = meter**2 / second
         domain = 'real'
-        latex_name = 'p_Dva2'
+        latex_name = 'p_2'
         default = 1.96e-05
 
     expr = D_va == T_a * p_Dva1 - p_Dva2
 
 
 class eq_alphaa(Equation):
-    """alpha_a as a function of air temperature"""
+    """alpha_a as a function of air temperature. 
+
+    \cite[Table A.3]{Monteith_principles_2007}
+    """
 
     class p_alpha1(Variable):
         """Internal parameter of eq_alphaa."""
         name = 'p_alpha1'
         unit = meter**2 / (kelvin * second)
         domain = 'real'
-        latex_name = 'p_alpha1'
+        latex_name = 'p_1'
         default = 1.32e-07
 
     class p_alpha2(Variable):
@@ -89,21 +92,24 @@ class eq_alphaa(Equation):
         name = 'p_alpha2'
         unit = meter**2 / second
         domain = 'real'
-        latex_name = 'p_alpha2'
+        latex_name = 'p_2'
         default = 1.73e-05
 
     expr = alpha_a == T_a * p_alpha1 - p_alpha2
 
 
 class eq_ka(Equation):
-    """k_a as a function of air temperature"""
+    """k_a as a function of air temperature. 
+
+    \cite[Table A.3]{Monteith_principles_2007}
+    """
 
     class p_ka1(Variable):
         """Internal parameter of eq_ka."""
         name = 'p_ka1'
         unit = joule / (kelvin**2 * meter * second)
         domain = 'real'
-        latex_name = 'p_ka1'
+        latex_name = 'p_1'
         default = 6.84e-05
 
     class p_ka2(Variable):
@@ -111,21 +117,24 @@ class eq_ka(Equation):
         name = 'p_ka2'
         unit = joule / (kelvin * meter * second)
         domain = 'real'
-        latex_name = 'p_ka2'
+        latex_name = 'p_2'
         default = 5.63e-03
 
     expr = k_a == T_a * p_ka1 + p_ka2
 
 
 class eq_nua(Equation):
-    """nu_a as a function of air temperature"""
+    """nu_a as a function of air temperature. 
+
+    \cite[Table A.3]{Monteith_principles_2007}
+    """
 
     class p_nua1(Variable):
         """Internal parameter of eq_nua."""
         name = 'p_nua1'
         unit = meter**2 / (kelvin * second)
         domain = 'real'
-        latex_name = 'p_nua1'
+        latex_name = 'p_1'
         default = 9.e-08
 
     class p_nua2(Variable):
@@ -133,7 +142,7 @@ class eq_nua(Equation):
         name = 'p_nua2'
         unit = meter**2 / second
         domain = 'real'
-        latex_name = 'p_nua2'
+        latex_name = 'p_2'
         default = 1.13e-05
 
     expr = nu_a == T_a * p_nua1 - p_nua2

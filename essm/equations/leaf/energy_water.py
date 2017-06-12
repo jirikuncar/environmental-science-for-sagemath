@@ -1,15 +1,10 @@
 """Leaf energy and water balance equations."""
 
 from __future__ import division
-
 from essm.equations import Equation
 from essm.variables import Variable
-from essm.variables.leaf.unsorted import (
-    C_wa, C_wl, E_l, E_lmol, H_l, L_l, P_wl, R_ll, T_l, T_w, a_s, a_sh,
-    epsilon_l, g_bw, g_sw, g_tw, g_twmol)
-from essm.variables.physics.thermodynamics import (
-    D_va, Le, M_w, P_a, P_wa, R_mol, R_s, Sh, T_a, c_pa, h_c, lambda_E, rho_a,
-    sigm)
+from essm.variables.leaf.energy_water import C_wa, C_wl, E_l, E_lmol, H_l, L_l, P_wl, R_ll, T_l, T_w, a_s, a_sh, epsilon_l, g_bw, g_sw, g_tw, g_twmol
+from essm.variables.physics.thermodynamics import D_va, Le, M_w, P_a, P_wa, R_mol, R_s, Sh, T_a, c_pa, h_c, lambda_E, rho_a, sigm
 from essm.variables.units import kelvin, pascal
 from sage.all import e
 
@@ -69,14 +64,17 @@ class eq_Cwl(Equation):
 
 
 class eq_Pwl(Equation):
-    """Clausius-Clapeyron P_wl as function of T_l. \cite[Eq. B.3]{hartmann_global_1994}"""
+    """Clausius-Clapeyron P_wl as function of T_l. 
+
+    \cite[Eq. B.3]{hartmann_global_1994}
+    """
 
     class p_CC1(Variable):
         """Internal parameter of eq_Pwl."""
         name = 'p_CC1'
         unit = pascal
         domain = 'real'
-        latex_name = 'p_CC1'
+        latex_name = 'p_1'
         default = 611.
 
     class p_CC2(Variable):
@@ -84,7 +82,7 @@ class eq_Pwl(Equation):
         name = 'p_CC2'
         unit = kelvin
         domain = 'real'
-        latex_name = 'p_CC2'
+        latex_name = 'p_2'
         default = 273.
 
     expr = P_wl == p_CC1 * e**(-M_w * lambda_E * (1 / T_l - 1 / p_CC2) / R_mol)

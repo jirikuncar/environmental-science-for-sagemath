@@ -132,7 +132,7 @@ class EquationWriter(object):
     TPL = EQUATION_TPL
     VAR_TPL = VARIABLE_TPL
     default_imports = {
-        '__future__': {'division'}, 
+        '__future__': {'division'},
         'essm.equations': {'Equation'}}
     """Set up default imports, including standard division as opposed to floor division in Python 2.7"""
 
