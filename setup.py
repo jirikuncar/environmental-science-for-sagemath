@@ -55,6 +55,7 @@ for reqs in extras_require.values():
 
 
 setup_requires = [
+    'isort>=4.2.2',
     'pytest-runner>=2.6.2',
 ]
 

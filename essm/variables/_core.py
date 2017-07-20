@@ -24,15 +24,18 @@ from __future__ import absolute_import
 import warnings
 
 import six
+
 from sympy import Basic, S
 from sympy.physics.units import Dimension, Quantity
+
+from ..bases import RegistryType
+from ..transformer import build_instance_expression
+from .units import derive_unit
+
 # FIXME use SymPy 1.1
 # from sympy.physics.units.quantities import \
 #     _Quantity_constructor_postprocessor_Add
 
-from .units import derive_unit
-from ..bases import RegistryType
-from ..transformer import build_instance_expression
 
 
 class VariableMeta(RegistryType):

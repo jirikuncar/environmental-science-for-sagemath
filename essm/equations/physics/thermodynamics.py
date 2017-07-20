@@ -24,9 +24,11 @@ from __future__ import division
 from essm import Eq, sqrt
 from essm.equations import Equation
 from essm.variables import Variable
-from essm.variables.physics.thermodynamics import (
-    M_N2, M_O2, P_N2, P_O2, C_wa, D_va, Le, M_w, Nu, P_a, P_wa, Pr, R_mol, Re,
-    Re_c, T_a, alpha_a, k_a, nu_a, rho_a, x_N2, x_O2)
+from essm.variables.physics.thermodynamics import (M_N2, M_O2, P_N2, P_O2,
+                                                   C_wa, D_va, Le, M_w, Nu,
+                                                   P_a, P_wa, Pr, R_mol, Re,
+                                                   Re_c, T_a, alpha_a, k_a,
+                                                   nu_a, rho_a, x_N2, x_O2)
 from essm.variables.units import joule, kelvin, meter, second
 
 

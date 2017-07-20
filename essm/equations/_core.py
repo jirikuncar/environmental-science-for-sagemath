@@ -24,6 +24,7 @@ from __future__ import absolute_import
 import warnings
 
 import six
+
 from sympy.core.relational import Eq
 
 from ..bases import RegistryType

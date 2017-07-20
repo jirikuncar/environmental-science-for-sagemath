@@ -25,10 +25,9 @@ This unit system adds kelvin and mole.
 
 from __future__ import division
 
-from sympy.physics.units.definitions import cd, K, mol
-from sympy.physics.units.dimensions import (
-    amount_of_substance, luminous_intensity, temperature)
-
+from sympy.physics.units.definitions import K, cd, mol
+from sympy.physics.units.dimensions import (amount_of_substance,
+                                            luminous_intensity, temperature)
 from sympy.physics.units.prefixes import PREFIXES, prefix_unit
 from sympy.physics.units.systems.mksa import MKSA, _mksa_dim
 
